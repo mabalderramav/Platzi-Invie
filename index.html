@@ -36,8 +36,13 @@
     </section>
     <section id="guitarras" class="guitarras contenedor"><!-- Guitarras -->
         <h2>Nuestras guitarras</h2><!-- Titulo -->
+        <div class="video-responsive-contenedor">
+          <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <!-- <video src="video/320x240.ogg">
+        </video> -->
         <article class="guitarra"><!-- Item1-Guitarra -->
-            <img class="rigth" src="images/invie-acustica.png" width="350" alt="Guitarra invie acustica"/>
+            <img class="rigth" data-src="images/invie-acustica.png" width="350" alt="Guitarra invie acustica"/>
             <div class="contenedor-guitarra-a">
                 <h3 class="title-b">Invie Acustica</h3>
                 <ol>
@@ -48,7 +53,7 @@
             </div>
         </article>
         <article class="guitarra b"><!-- Item2- -->
-            <img class="left" src="images/invie-classic.png" width="350" alt="Guitarra invie Classic"/>
+            <img class="left" data-src="images/invie-classic.png" width="350" alt="Guitarra invie Classic"/>
             <div class="contenedor-guitarra-b">
                 <h3 class="title-b">Invie Acustica</h3>
                 <ol>
@@ -62,7 +67,7 @@
     <footer class="footer">
         <div class="contenedor">
             <div class="contacto">
-                <img src="images/invie-white.png" alt="logotipo blanco">
+                <img data-src="images/invie-white.png" alt="logotipo blanco">
                 <a href="tel:+59160895096"><strong>Telefono</strong> <span>+59160895096</span></a>
                 <a href="mailto:contacto@invie.com"><strong>E-mail</strong> <span>contacto@invie.com</span></a>
             </div>
@@ -103,11 +108,28 @@
             </from>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.6.3/blazy.min.js">
+    </script>
     <script type="text/javascript">
+      var query = window.matchMedia('(max-width: 500px)');
       var $burguerButton = document.getElementById('burguer-button');
       var $menu = document.getElementById('menu');
-      $burguerButton.addEventListener('touchstart', function () {
+      function toggleMenu() {
         $menu.classList.toggle('active');
+      }
+      query.addListener(mediaQuery);
+      function mediaQuery() {
+        if (query.matches){
+          $burguerButton.addEventListener('touchstart', toggleMenu);
+        }else {
+          $burguerButton.removeEventListener('touchstart', toggleMenu);
+        }
+      }
+      mediaQuery();
+
+      //Lazy loading.
+      var bLazy = new Blazy({
+        selector : 'img'
       });
     </script>
 </body>
