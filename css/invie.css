@@ -73,6 +73,7 @@ input:focus, textarea:focus{
     position: relative;
 }
 .background{
+    background-color: #466173;
     background-image: url('../images/background.png');
     background-size: cover;
 }
@@ -242,12 +243,22 @@ input:focus, textarea:focus{
   display: inline-block;
   text-align: center;
   position: absolute;
+  color: white;
   left: 20px;
   top: 20px;
   cursor: pointer;
   z-index: 3;
 }
 @media screen and (max-width: 800px){
+    /* precios */
+    .tabla {
+      margin: 50px 20px;
+    }
+    .tabla .contenedor {
+      overflow: auto;
+      border: 1px solid #273b47;
+    }
+    /* precios */
     /* Portada */
     .titulo{
         font-size: 45px;
@@ -352,6 +363,13 @@ input:focus, textarea:focus{
   .portada .contenedor {
     position: static;
   }
+
+  .header {
+    position: static;
+  }
+  .header .contenedor {
+    position: static;
+  }
   .menu {
     background: rgba(255, 60, 88, .8);
     position: absolute;
@@ -420,4 +438,10 @@ video {
   bottom: 0;
   width: 100%;
   height: 100%;
+}
+
+@media screen and (-webkid-min-device-pixel-ratio: 2) {
+  .background {
+    background-image: url('../images/background2x.png');
+  }
 }
