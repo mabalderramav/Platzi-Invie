@@ -108,6 +108,8 @@
             </from>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.6.3/blazy.min.js">
     </script>
     <script type="text/javascript">
@@ -115,6 +117,12 @@
       var $burguerButton = document.getElementById('burguer-button');
       var $menu = document.getElementById('menu');
       function toggleMenu() {
+        $menu.classList.add('active');
+      }
+      function showMenu() {
+        $menu.classList.remove('active');
+      }
+      function hideMenu() {
         $menu.classList.toggle('active');
       }
       query.addListener(mediaQuery);
@@ -131,6 +139,11 @@
       var bLazy = new Blazy({
         selector : 'img'
       });
+      // Gestos touch
+      var $body = document.body;
+      var gestos = new Hammer($body);
+        gestos.on('swipeleft', showMenu);
+        gestos.on('swiperight', hideMenu);
     </script>
 </body>
 </html>
